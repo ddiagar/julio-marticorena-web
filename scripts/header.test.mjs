@@ -10,6 +10,7 @@ try {
   const html = renderToStaticMarkup(
     createElement(MemoryRouter,null,createElement(Header))
   );
+  assert.ok(html.includes('Experiencia y tradición desde 1940'),'The brand must present its complete historic tagline');
   assert.ok(html.includes('Remates electrónicos'),'The header must expose electronic auctions');
   assert.ok(html.includes('href="https://www.remateselectronicos.com/"'),'The electronic-auction link must open the correct service');
   assert.ok(html.includes('target="_blank"'),'The external destination must open separately');
