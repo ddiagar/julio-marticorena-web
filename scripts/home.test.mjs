@@ -18,6 +18,13 @@ try {
     'viernes 2 de octubre a las 12:00'
   ]) assert.ok(html.includes(fact),`The featured auction is missing: ${fact}`);
   assert.ok(html.includes('href="/remates/bascunan-guerrero"'),'The featured auction must link to its detail');
+  assert.ok(html.includes('aria-label="Galería del remate destacado"'),'The featured auction must expose an accessible carousel');
+  assert.ok(html.includes('aria-label="Fotografía anterior"'),'The featured carousel must offer previous navigation');
+  assert.ok(html.includes('aria-label="Fotografía siguiente"'),'The featured carousel must offer next navigation');
+  assert.equal((html.match(/class="featured-carousel-dot"/g)??[]).length,6,'The featured carousel must expose six direct-selection controls');
+  for (const image of ['001','020','040','060','080','096']) {
+    assert.ok(html.includes(`/images/presencial/${image}.jpg`),`The featured carousel is missing representative image ${image}`);
+  }
   assert.ok(!html.includes('La experiencia de siempre.'),'The former generic hero must not remain');
   console.log('Home: featured in-person auction, dates and detail access verified.');
 } finally { await server.close(); }
