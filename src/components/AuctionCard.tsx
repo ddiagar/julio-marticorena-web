@@ -1,0 +1,5 @@
+import {Link} from 'react-router-dom';
+import {ArrowUpRight,CalendarDays,MapPin,Warehouse} from 'lucide-react';
+import {content,type Auction} from '../data/mockData';
+interface AuctionCardProps {readonly auction:Auction;}
+export function AuctionCard({auction}:AuctionCardProps){return <article className="auction-card"><Link to={`/remates/${auction.id}`} className="card-photo">{auction.image?<img src={auction.image} alt={auction.category} loading="lazy" width="360" height="240"/>:<div className="card-no-photo"><Warehouse size={64} strokeWidth={1}/></div>}<span className="badge">{auction.mode}</span></Link><div className="card-body"><p className="eyebrow">{auction.category}</p><h3><Link to={`/remates/${auction.id}`}>{auction.title}</Link></h3><p className="card-description">{auction.description}</p><div className="card-facts"><p><CalendarDays size={16}/><span>{auction.date}</span></p><p><MapPin size={16}/><span>{auction.location}</span></p></div><Link className="button secondary w-full" to={`/remates/${auction.id}`}>{content.agenda.detail}<ArrowUpRight size={16}/></Link></div></article>;}

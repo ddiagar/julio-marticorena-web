@@ -1,0 +1,11 @@
+import {readFileSync,mkdirSync,writeFileSync} from 'node:fs';
+import {createRequire} from 'node:module';
+const require=createRequire('/Users/ddiagar-mpro/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/package.json');
+const sharp=require('sharp');
+mkdirSync('public/images',{recursive:true});
+const html=readFileSync('.stitch/designs/home.html','utf8');
+const hero=html.match(/<img\b[^>]*\bsrc="([^"]+)"/)[1].replaceAll('&amp;','&');
+const imageResponse=await fetch(hero);if(!imageResponse.ok)throw new Error('Hero download failed');
+await sharp(Buffer.from(await imageResponse.arrayBuffer())).resize({width:1000,withoutEnlargement:true}).webp({quality:85}).toFile('public/images/hero.webp');
+for(const [source,target] of [['catalog-asset-1','presencial'],['catalog-asset-2','antofagasta'],['catalog-asset-3','venta'],['detail-asset-5','detalle']])await sharp(`.stitch/designs/${source}.png`).resize({width:1200,withoutEnlargement:true}).webp({quality:82}).toFile(`public/images/${target}.webp`);
+console.log('Prepared local responsive images from Stitch.');

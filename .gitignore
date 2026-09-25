@@ -1,0 +1,17 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.env*
+!.env.example
+.stitch/
+resources/
+create-*.json
+design-system.json
+generate-*.json
+generated-*.json
+get-*.json
+project.json
+screen-*.json
+stitch-tools.json
+upload-*.json
+uploaded-*.json

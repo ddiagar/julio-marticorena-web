@@ -1,0 +1,6 @@
+import {Link} from 'react-router-dom';
+import {mapLinks} from '../data/mapLinks';
+import {content,type Channel} from '../data/mockData';
+import {SocialButton} from './SocialButton';
+interface FooterProps {readonly onSocial:(channel:Channel)=>void;}
+export function Footer({onSocial}:FooterProps){return <footer className="footer"><div className="container footer-grid"><div><Link className="brand" to="/">{content.brand}<span>{content.since}</span></Link><p>{content.footer.note}</p><p><a href={mapLinks(content.contact.offices[0].mapAddress).google} target="_blank" rel="noopener noreferrer">{content.contact.offices[0].address}</a></p></div><div><h2 className="eyebrow">{content.footer.navigation}</h2><nav>{content.nav.map(n=><Link key={n.to} to={n.to}>{n.label}</Link>)}</nav></div><div><h2 className="eyebrow">{content.footer.contact}</h2><a href={content.contact.phoneHref}>{content.contact.phone}</a><a className="break-words" href={content.contact.emailHref}>{content.contact.email}</a></div><div><h2 className="eyebrow">{content.contact.pending}</h2><div className="flex gap-2">{(['whatsapp','facebook','instagram'] as const).map(channel=><SocialButton key={channel} compact channel={channel} onOpen={onSocial}/>)}</div></div></div><div className="container footer-bottom"><span>{content.footer.rights}</span><span>{content.footer.phase}</span></div></footer>;}

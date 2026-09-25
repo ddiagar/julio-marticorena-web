@@ -1,0 +1,3 @@
+import {content} from '../data/mockData';
+interface ParticipationStepsProps {readonly standalone?:boolean;}
+export function ParticipationSteps({standalone=false}:ParticipationStepsProps){return <section className="section participation"><div className="container"><p className="eyebrow">{content.stepsEyebrow}</p>{standalone?<h1 className="page-title">{content.stepsTitle}</h1>:<h2 className="max-w-2xl">{content.stepsTitle}</h2>}<div className="steps-grid">{content.steps.map((step,index)=><article className="step" key={step.title}><span className="step-number">{String(index+1).padStart(2,'0')}.</span><h3>{step.title}</h3><p className="muted">{step.body}</p></article>)}</div></div></section>;}
