@@ -126,13 +126,15 @@
 .publication-index {padding:26px;background:var(--color-background);border:1px solid var(--color-border);}
 .publication-index>div {display:flex;flex-wrap:wrap;gap:10px;}
 .publication-index button {padding:10px 14px;border:1px solid var(--color-border);border-radius:3px;font-size:13px;text-align:left;color:var(--color-secondary);background:var(--color-surface);}
-.publication-section {padding:36px 0;border-bottom:1px solid var(--color-border);scroll-margin-top:120px;}
-.publication-section h2 {font-size:32px;}
-.publication-list {list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 32px;}
-.publication-list li {padding:16px 0;border-bottom:1px solid var(--color-border);font-size:15px;line-height:1.85;overflow-wrap:anywhere;}
-.publication-list li:last-child {border-bottom:0;}
-.publication-highlight {background:var(--color-background);padding:28px;margin-top:28px;border-left:3px solid var(--color-secondary);}
-.publication-highlight .publication-list li:first-child {grid-column:1/-1;font-weight:500;color:var(--color-secondary);}
+.publication-inventory { @apply bg-surface border border-border dark:bg-primary-container dark:border-outline; margin-top:24px;padding:12px 40px;border-radius:28px;box-shadow:0 14px 40px rgb(0 26 41 / .06);}
+.publication-section {padding:34px 8px;border-bottom:1px solid var(--color-border);scroll-margin-top:120px;}
+.publication-section:last-child {border-bottom:0;}
+.publication-section h2 { @apply text-secondary dark:text-secondary-fixed font-body; font-size:20px;font-weight:700;letter-spacing:-.01em;margin:0 0 20px;}
+.publication-list {list-style:disc;padding-left:22px;margin:0;}
+.publication-list li { @apply text-primary-container dark:text-background; padding:5px 0 5px 5px;font-size:15px;line-height:1.75;overflow-wrap:anywhere;}
+.publication-list li::marker { @apply text-secondary dark:text-secondary-fixed; }
+.publication-highlight { @apply bg-soft-surface dark:bg-primary; padding:28px;margin:12px 0;border-left:3px solid var(--color-secondary);border-radius:4px;}
+.publication-highlight .publication-list li:first-child {font-weight:500;color:var(--color-secondary);}
 .publication-intro {max-width:760px;margin-bottom:28px;}
 .judicial-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:start;}
 .judicial-card {border:1px solid var(--color-border);min-width:0;overflow:hidden;background:var(--color-surface);}
@@ -148,4 +150,4 @@
 .judicial-card dd {margin:0;}
 .judicial-card summary {font-size:14px;font-weight:500;color:var(--color-secondary);padding:14px 0;border-top:1px solid var(--color-border);}
 .judicial-card details p {font-size:12px;line-height:1.9;overflow-wrap:anywhere;}
-@media(max-width:620px){.publication-list,.judicial-grid{grid-template-columns:1fr}.publication-index,.publication-highlight,.judicial-card-body{padding:22px}.publication-section{scroll-margin-top:100px}.publication-section h2{font-size:28px}.publication-index button{font-size:12px}}
+@media(max-width:620px){.judicial-grid{grid-template-columns:1fr}.publication-index,.judicial-card-body{padding:22px}.publication-inventory{padding:8px 18px;border-radius:20px}.publication-section{padding:28px 4px;scroll-margin-top:100px}.publication-section h2{font-size:18px}.publication-highlight{padding:22px 18px}.publication-index button{font-size:12px}.publication-list{padding-left:20px}.publication-list li{padding-left:2px;font-size:14px}}

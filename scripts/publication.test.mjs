@@ -16,6 +16,7 @@ try {
  for(const fact of ['PLANCHAS PV4','ZINCALUM PREPINTADO','6 METROS','0,40 MM','ESPESOR']) assert.ok(pv4Content.includes(fact),`PV4 must preserve published fact: ${fact}`);
  for(const [slug,id] of [['presencial','bascunan-guerrero'],['electronico','antofagasta'],['venta','galpones-planchas']]){
   const html=renderToStaticMarkup(createElement(MemoryRouter,{initialEntries:['/remates/'+id]},createElement(Routes,null,createElement(Route,{path:'/remates/:id',element:createElement(DetailPage)}))));
+  assert.equal((html.match(/class="publication-inventory"/g)??[]).length,1,`${slug}: inventory sections must share one grouped detail panel`);
   const source=readFileSync('.stitch/sources/'+slug+'.html','utf8').split('<tr><td valign=top>').at(-1).split('</td><td width=200')[0];
   const lines=source.replace(/<b>[\s\S]*?<\/b>/,'').split(/<br\s*\/?\s*>/i).map(normalize).filter(Boolean);
   for(const line of lines) assert.ok(normalize(html).includes(line),`${slug}: missing published information: ${line}`);

@@ -8,7 +8,7 @@ export function PublicationDetails({auctionId}:PublicationDetailsProps){
  const sections:readonly PublicationSection[]=(details as Record<string,readonly PublicationSection[]>)[auctionId]??[];
  return <div className="publication-details">
   <div className="publication-index"><p className="eyebrow">En este remate</p><div>{sections.map(section=><button key={section.id} onClick={()=>document.getElementById(section.id)?.scrollIntoView({behavior:'smooth',block:'start'})}>{section.title}</button>)}</div></div>
-  {sections.map(section=><section className={'publication-section'+(section.highlight?' publication-highlight':'')} key={section.id} id={section.id}>
+  <div className="publication-inventory">{sections.map(section=><section className={'publication-section'+(section.highlight?' publication-highlight':'')} key={section.id} id={section.id}>
    <h2>{section.title}</h2>{section.intro&&<p className="publication-intro">{section.intro}</p>}
    {section.paragraphs.length>0&&<ul className="publication-list">{section.paragraphs.map((paragraph,index)=><li key={index}>{paragraph}</li>)}</ul>}
    {section.cards&&<div className="judicial-grid">{section.cards.map(vehicle=><article className="judicial-card" key={vehicle.plate}>
@@ -18,6 +18,6 @@ export function PublicationDetails({auctionId}:PublicationDetailsProps){
      <details><summary>Aviso judicial completo</summary><p>{vehicle.notice}</p></details>
     </div>
    </article>)}</div>}
-  </section>)}
+  </section>)}</div>
  </div>;
 }
