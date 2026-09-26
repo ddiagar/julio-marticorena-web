@@ -23,7 +23,11 @@ try {
   if(slug==='presencial'){
    assert.equal((html.match(/class="judicial-photo"/g)??[]).length,4,'Render the four individual judicial vehicle photos published');
    assert.ok(html.includes('Sin fotografía individual publicada'),'Explain the missing Suzuki photo without substituting another vehicle');
-   for(const plate of ['GCHW.97-1','RZZR.26-4','TBBF.86-8','SPLS.36-0']) assert.ok(html.includes(`alt="${plate}`),`Photo alt must identify ${plate}`);
+   for(const plate of ['GCHW.97-1','RZZR.26-4','TBBF.86-8','SPLS.36-0']){
+    assert.ok(html.includes(`alt="${plate}`),`Photo alt must identify ${plate}`);
+    assert.ok(html.includes(`aria-label="Ampliar fotografía de ${plate}`),`Judicial photo for ${plate} must open an enlarged view`);
+    assert.ok(html.includes(`aria-label="Fotografía ampliada de ${plate}`),`Enlarged view for ${plate} must be labelled`);
+   }
   }
   console.log(`${slug}: ${lines.length} published lines preserved in the rendered detail.`);
  }
