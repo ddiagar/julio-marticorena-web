@@ -135,7 +135,7 @@
 .publication-list li::marker { @apply text-secondary dark:text-secondary-fixed; }
 .publication-highlight { @apply bg-soft-surface dark:bg-primary; padding:28px 30px;margin:12px 0;border-left:3px solid var(--color-secondary);border-radius:4px;}
 .publication-highlight .publication-list li:first-child {font-weight:500;color:var(--color-secondary);}
-.publication-intro {max-width:760px;margin-bottom:28px;}
+.publication-intro {max-width:none;margin-bottom:28px;}
 .judicial-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:start;}
 .judicial-card {border:1px solid var(--color-border);min-width:0;overflow:hidden;background:var(--color-surface);}
 .judicial-card-body {padding:28px;}
